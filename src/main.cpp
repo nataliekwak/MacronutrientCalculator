@@ -8,3 +8,10 @@ int main ()
     cout << "update";
     cout << "update2";
 }
+
+// Natalie's section
+///////////////////////////////////////////////////////
+void print()
+{
+    cout << "printing";
+}
