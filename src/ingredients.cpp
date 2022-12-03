@@ -4,3 +4,15 @@
 // 13 -> Protein
 // 17 -> Total Sugars
 
+// Each HashNode is an ingredient
+class HashNode
+{
+
+};
+
+// HashMap holds all the ingredients
+class HashMap
+{
+
+};
+
