@@ -10,3 +10,10 @@ int main ()
 
     cout << "Tommy"
 }
+
+// Natalie's section
+///////////////////////////////////////////////////////
+void print()
+{
+    cout << "printing";
+}
