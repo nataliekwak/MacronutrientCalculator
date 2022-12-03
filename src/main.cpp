@@ -1,24 +1,25 @@
+#include "ingredients.cpp"
+
 #include <iostream>
 using namespace std;
 
 int main ()
 {
-    cout << "Hello World";
-    cout << "hi";
-    cout << "update";
-    cout << "update2";
+    // Take user input
 
-
-    //Nikhil
-    // ------------------------------------------------------------------
+    // Output
+    
+    return 0;
 }
 
-// Natalie's section
-///////////////////////////////////////////////////////
-void print()
+// Function to perform quick sort based on total sugar
+void sugarQuickSort ()
 {
-    cout << "printing";
+
 }
 
+// Function to perform quick sort based on total protein
+void proteinQuickSort ()
+{
 
-// Merge sort
+}
