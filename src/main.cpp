@@ -11,15 +11,3 @@ int main ()
     
     return 0;
 }
-
-// Function to perform quick sort based on total sugar
-void sugarQuickSort ()
-{
-
-}
-
-// Function to perform quick sort based on total protein
-void proteinQuickSort ()
-{
-
-}
