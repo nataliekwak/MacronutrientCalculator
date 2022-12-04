@@ -11,8 +11,6 @@ struct Ingredient
     float protein; // Index 13 
     float sugar; // Index 17 
 
-    // Add any other values we might have to store about each ingredient
-
     // Constructor
     Ingredient (string shortName, string longName, float carb, float chol; float p, float s)
     {
