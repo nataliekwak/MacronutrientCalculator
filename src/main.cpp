@@ -35,7 +35,7 @@ int main ()
 {
     // Make hashmap by calling populateHashMap("ingredients.csv")
     unordered_map<Ingredient, int, HashFunction> hashMap;
-    hashMap = populateHashMap("Ingredients.csv");
+    hashMap = populateHashMap("ingredients.csv");
 
 
     // Output
