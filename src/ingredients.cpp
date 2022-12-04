@@ -61,6 +61,7 @@ class HashFunction
     public:
         size_t operator()(const Ingredient& i) const
         {
-            // Return result of hash function here
+            return int(i.genericName[0]) + int(i.genericName[1]) + int(i.genericName[2]);
+            // hash function that calulates the ascii values for the first 3 characters
         }
 };
