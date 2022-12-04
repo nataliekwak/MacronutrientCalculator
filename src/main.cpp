@@ -10,6 +10,15 @@ unordered_map<Ingredient, int, HashFunction> populateHashMap (string file)
     unordered_map<Ingredient, int, HashFunction> hashMap;
 
     // Do file reading and map populating here
+    fstream inFile;
+    inFile.open("ingredients.csv"); ///FIGURE OUT A WAY TO ATTACH THIS IN GITHUB///
+    
+    if (inFile.is_open()) {
+         cout << "File has been opened" << endl;
+    }
+    else {
+         cout << "ERROR: FILE NOT FOUND" << endl;
+    }
 
     return hashMap;
 }
