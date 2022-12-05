@@ -5,19 +5,58 @@
 using namespace std;
 
 // Helper function to read the passed in csv file and return a populated hashmap 
-unordered_map<Ingredient, int, HashFunction> populateHashMap (string file)
+unordered_map<Ingredient*, int, HashFunction> populateHashMap (string file)
 {
-    unordered_map<Ingredient, int, HashFunction> hashMap;
+    unordered_map<Ingredient*, int, HashFunction> hashMap;
 
     // Do file reading and map populating here
     ifstream inFile;
-    inFile.open("ingredients.csv"); 
+    inFile.open(file); 
     
     if (inFile.is_open()) {
          cout << "File has been opened" << endl;
     }
     else {
          cout << "ERROR: FILE NOT FOUND" << endl;
+    }
+
+    // Take the header line out of the file
+    string trash;
+    getline(inFile, trash);
+
+    // Read the data from the file as a string vector
+    vector<string> row;
+    string line, singleValue, temp;
+
+    while (inFile >> temp)
+    {
+        row.clear();
+
+        // Read a whole row and store it in line
+        getline(inFile, line);
+
+        // Break up the line to get each singular value
+        stringstream s(line);
+
+        // Read each column of the current row and push to row vector
+        while (getline(s, singleValue, ','))
+        {
+            row.push_back(singleValue);
+        }
+
+        // Get necessary values from row and convert when needed
+        string genericName = row[0];
+        string specificName = row[1];
+        float carb = stof(row[6]);
+        float cholesterol = stof(row[7]);
+        float protein = stof(row[13]);
+        float sugar = stof(row[17]);
+
+        // Create an Ingredient object with the data from the csv
+        Ingredient* food = new Ingredient(genericName, specificName, carb, cholesterol, protein, sugar);
+
+        // Add the Ingredient to the hashMap
+        hashMap[food];
     }
 
     return hashMap;
@@ -28,28 +67,27 @@ void mergeSort(unordered_map<Ingredient, int, HashFunction> *hashMap, string sor
     
 }
 
-
-
-
 int main ()
 {
     // Make hashmap by calling populateHashMap("ingredients.csv")
-    unordered_map<Ingredient, int, HashFunction> hashMap;
+    unordered_map<Ingredient*, int, HashFunction> hashMap;
     hashMap = populateHashMap("ingredients.csv");
 
 
-    // Output
-
     // Take user input
-    while (true){
+    bool exit = false;
+    while (!exit){
         int choice;
-        cout << "0. Exit\n" << "1. Print ingredients by protein\n" << "3. Check specifc ingredient\n";
+        cout << "0. Exit\n" << "1. Print ingredients by protein\n" << "3. Print ingredients by sugar\n" << "3. Check specifc ingredient\n";
         cin >> choice;
 
-        if (choice == 0){
-            return;
+        if (choice == 0)
+        {
+            exit = true;
+            break;
         }
-        if (choice == 1){
+        else if (choice == 1)
+        {
 
         }
 
