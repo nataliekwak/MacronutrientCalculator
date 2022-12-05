@@ -81,7 +81,7 @@ void printHashMap (unordered_map<string, Ingredient*> map)
     cout << "\nThere are " << testCounter << " ingredients in the hash map." << endl;
 }
 
-void swap(vector<float> vect, int numOne, int numTwo){
+void swap(vector<float> &vect, int numOne, int numTwo){
     float temp = vect[numOne];
     vect[numOne] = vect[numTwo];
     vect[numTwo] = temp;
