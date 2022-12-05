@@ -111,9 +111,48 @@ void quickSort(vector<float> &vect, int low, int high){
         quickSort(vect,sort + 1, high);
     }
 }
-// void mergeSort(unordered_map<Ingredient, int, HashFunction> *hashMap, string sortBy){
+//void mergeSort(unordered_map<string, Ingredient*> hashMap, string sortBy){
     
-// }
+//}
+void merge(vector<Ingredient>& vect, int low, int mid, int high, string sortBy){
+    vector<Ingredient> temp;
+    int i = low;
+    int j = mid + 1;
+
+    while (i <= mid && j <= high){
+        if (vect[i].sortBy <= vect[j].sortBy){
+            temp.push_back(vect[i]);
+            ++i;
+        }
+        else {
+            temp.push_back(vect[j]);
+            ++j;
+        }
+    }
+    while (i <= mid){
+        temp.push_back(vect[i]);
+        ++i;
+    }
+    while (j <= high){
+        temp.push_back(vect[j]);
+        ++j
+    }
+    for (int i = low; i <= high; ++i){
+        vect[i] = temp[i - low]
+    }
+
+
+}
+
+void mergeSort(vector<Ingredient>& vect, int low, int high, string sortBy){
+    if (low < high){
+        int mid = (low + high) / 2;
+        mergeSort(vect, low, mid, sortBy);
+        mergeSort(vect, mid+1, high, sortBy);
+        merge(vect, low, mid, high, sortBy);
+    }
+}
+
 
 int main ()
 {
