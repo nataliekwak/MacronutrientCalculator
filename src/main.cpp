@@ -81,19 +81,23 @@ void printHashMap (unordered_map<string, Ingredient*> map)
     cout << "\nThere are " << testCounter << " ingredients in the hash map." << endl;
 }
 
-void swap(vector<float> &vect, int numOne, int numTwo){
+void swap(vector<float> &vect, int numOne, int numTwo)
+{
     float temp = vect[numOne];
     vect[numOne] = vect[numTwo];
     vect[numTwo] = temp;
 }
 
 //helper function to sort with merge sort
-int splitArray(vector<float> & vect, int low, int high){
+int splitArray(vector<float> & vect, int low, int high)
+{
     float pivot = vect[high];
 
     int temp = (low - 1);
-    for(int i = low; i <= high - 1; i++){
-        if(vect[i] <= pivot){
+    for(int i = low; i <= high - 1; i++)
+    {
+        if(vect[i] <= pivot)
+        {
             temp++;
             swap(vect,temp,i);
         }
@@ -103,8 +107,10 @@ int splitArray(vector<float> & vect, int low, int high){
 
 }
 
-void quickSort(vector<float> &vect, int low, int high){
-    if(low < high){
+void quickSort(vector<float> &vect, int low, int high)
+{
+    if(low < high)
+    {
         int sort = splitArray(vect,low,high);
 
         quickSort(vect,low,sort - 1);
@@ -114,38 +120,47 @@ void quickSort(vector<float> &vect, int low, int high){
 //void mergeSort(unordered_map<string, Ingredient*> hashMap, string sortBy){
     
 //}
-void merge(vector<Ingredient>& vect, int low, int mid, int high, string sortBy){
+void merge(vector<Ingredient>& vect, int low, int mid, int high, string sortBy)
+{
     vector<Ingredient> temp;
     int i = low;
     int j = mid + 1;
 
-    while (i <= mid && j <= high){
-        if (vect[i].sortBy <= vect[j].sortBy){
+    while (i <= mid && j <= high)
+    {
+        if (vect[i].sortBy <= vect[j].sortBy)
+        {
             temp.push_back(vect[i]);
             ++i;
         }
-        else {
+        else 
+        {
             temp.push_back(vect[j]);
             ++j;
         }
     }
-    while (i <= mid){
+    while (i <= mid)
+    {
         temp.push_back(vect[i]);
         ++i;
     }
-    while (j <= high){
+    while (j <= high)
+    {
         temp.push_back(vect[j]);
         ++j;
     }
-    for (int i = low; i <= high; ++i){
+    for (int i = low; i <= high; ++i)
+    {
         vect[i] = temp[i - low];
     }
 
 
 }
 
-void mergeSort(vector<Ingredient>& vect, int low, int high, string sortBy){
-    if (low < high){
+void mergeSort(vector<Ingredient>& vect, int low, int high, string sortBy)
+{
+    if (low < high)
+    {
         int mid = (low + high) / 2;
         mergeSort(vect, low, mid, sortBy);
         mergeSort(vect, mid+1, high, sortBy);
@@ -153,9 +168,11 @@ void mergeSort(vector<Ingredient>& vect, int low, int high, string sortBy){
     }
 }
 
-vector<Ingredient> mergeSortWrapper(unordered_map<string, Ingredient*> map){
+vector<Ingredient> mergeSortWrapper(unordered_map<string, Ingredient*> map)
+{
 vector<Ingredient*> res;
-    for (auto i : map){
+    for (auto i : map)
+    {
         res.emplace_back(i);
     }
 }
