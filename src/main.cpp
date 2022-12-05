@@ -13,10 +13,12 @@ unordered_map<Ingredient*, int, HashFunction> populateHashMap (string file)
     ifstream inFile;
     inFile.open(file); 
     
-    if (inFile.is_open()) {
+    if (inFile.is_open()) 
+    {
          cout << "File has been opened" << endl;
     }
-    else {
+    else 
+    {
          cout << "ERROR: FILE NOT FOUND" << endl;
     }
 
@@ -76,7 +78,8 @@ int main ()
 
     // Take user input
     bool exit = false;
-    while (!exit){
+    while (!exit)
+    {
         int choice;
         cout << "0. Exit\n" << "1. Print ingredients by protein\n" << "3. Print ingredients by sugar\n" << "3. Check specifc ingredient\n";
         cin >> choice;
@@ -90,7 +93,6 @@ int main ()
         {
 
         }
-
     }
     
     return 0;
