@@ -135,10 +135,10 @@ void merge(vector<Ingredient>& vect, int low, int mid, int high, string sortBy){
     }
     while (j <= high){
         temp.push_back(vect[j]);
-        ++j
+        ++j;
     }
     for (int i = low; i <= high; ++i){
-        vect[i] = temp[i - low]
+        vect[i] = temp[i - low];
     }
 
 
