@@ -72,7 +72,8 @@ void printHashMap (unordered_map<string, Ingredient*> map)
 
     for (auto i : map)
     {
-        cout << i.first << endl;
+        // UNCOMMENT BELOW PRINT EACH SPECIFIC NAME IN THE MAP 
+        //cout << i.first << endl;
 
         testCounter++;
     }
