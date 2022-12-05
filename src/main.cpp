@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <bits/stdc++.h>
 #include <vector>
+#include <string>
 using namespace std;
 
 // Helper function to read the passed in csv file and return a populated hashmap 
@@ -10,8 +11,8 @@ unordered_map<string, Ingredient*> populateHashMap (string file)
     unordered_map<string, Ingredient*> hashMap;
 
     // Do file reading and map populating here
-    ifstream inFile; 
-    inFile.open(file); 
+    fstream inFile; 
+    inFile.open(file, ios::in); 
     
     if (inFile.is_open()) 
     {
@@ -23,19 +24,19 @@ unordered_map<string, Ingredient*> populateHashMap (string file)
     }
 
     // Take the header line out of the file
-    string trash;
-    getline(inFile, trash);
+    //string trash;
+    //getline(inFile, trash);
 
     // Read the data from the file as a string vector
     vector<string> row;
     string line, singleValue, temp;
 
-    while (inFile >> temp)
+    while (getline(inFile, line))
     {
         row.clear();
 
         // Read a whole row and store it in line
-        getline(inFile, line);
+        //getline(inFile, line);
 
         // Break up the line to get each singular value
         stringstream s(line);
@@ -69,9 +70,9 @@ void printHashMap (unordered_map<string, Ingredient*> map)
 {
     int testCounter = 0;
 
-    for (auto i = map.begin(); i != map.end(); i++)
+    for (auto i : map)
     {
-        
+        cout << i.first << endl;
 
         testCounter++;
     }
@@ -80,17 +81,17 @@ void printHashMap (unordered_map<string, Ingredient*> map)
 }
 
 //helper function to sort with merge sort
-void mergeSort(unordered_map<Ingredient, int, HashFunction> *hashMap, string sortBy){
+// void mergeSort(unordered_map<Ingredient, int, HashFunction> *hashMap, string sortBy){
     
-}
+// }
 
 int main ()
 {
     // Make hashmap by calling populateHashMap("ingredients.csv")
     unordered_map<string, Ingredient*> hashMap;
-    hashMap = populateHashMap("ingredients.csv");
+    hashMap = populateHashMap("tester.csv");
 
-    // printHashMap(hashMap);
+    printHashMap(hashMap);
 
     // // Take user input
     // bool exit = false;
