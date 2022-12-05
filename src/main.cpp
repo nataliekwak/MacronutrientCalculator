@@ -64,6 +64,21 @@ unordered_map<Ingredient*, int, HashFunction> populateHashMap (string file)
     return hashMap;
 }
 
+// Prints out each element in a passed in hashmap
+void printHashMap (unordered_map<Ingredient*, int, HashFunction> map)
+{
+    int testCounter = 0;
+
+    for (auto i = map.begin(); i != map.end(); i++)
+    {
+        
+
+        testCounter++;
+    }
+
+    cout << "\nThere are " << testCounter << " ingredients in the hash map." << endl;
+}
+
 //helper function to sort with merge sort
 void mergeSort(unordered_map<Ingredient, int, HashFunction> *hashMap, string sortBy){
     
@@ -75,25 +90,26 @@ int main ()
     unordered_map<Ingredient*, int, HashFunction> hashMap;
     hashMap = populateHashMap("ingredients.csv");
 
+    // printHashMap(hashMap);
 
-    // Take user input
-    bool exit = false;
-    while (!exit)
-    {
-        int choice;
-        cout << "0. Exit\n" << "1. Print ingredients by protein\n" << "3. Print ingredients by sugar\n" << "3. Check specifc ingredient\n";
-        cin >> choice;
+    // // Take user input
+    // bool exit = false;
+    // while (!exit)
+    // {
+    //     int choice;
+    //     cout << "0. Exit\n" << "1. Print ingredients by protein\n" << "3. Print ingredients by sugar\n" << "3. Check specifc ingredient\n";
+    //     cin >> choice;
 
-        if (choice == 0)
-        {
-            exit = true;
-            break;
-        }
-        else if (choice == 1)
-        {
+    //     if (choice == 0)
+    //     {
+    //         exit = true;
+    //         break;
+    //     }
+    //     else if (choice == 1)
+    //     {
 
-        }
-    }
+    //     }
+    // }
     
     return 0;
 }

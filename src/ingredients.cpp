@@ -4,7 +4,6 @@ using namespace std;
 // Holds ingredient objects
 class Ingredient
 {
-    private:
         string genericName; // Index 0 of the csv
         string specificName; // Index 1
         float carbohydrate; // Index 6
@@ -12,7 +11,6 @@ class Ingredient
         float protein; // Index 13 
         float sugar; // Index 17 
 
-    public:
         // Constructor
         Ingredient () {};
 
@@ -102,7 +100,7 @@ class HashFunction
     public:
         size_t operator()(const Ingredient& i) const
         {
-            return int(i.genericName[0]) + int(i.genericName[1]) + int(i.genericName[2]);
+            return int(i.genericName[0]) + int(i.genericName.charAt[1]) + int(i.genericName.charAt[2]);
             // hash function that calulates the ascii values for the first 3 characters
         }
 };
