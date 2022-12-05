@@ -96,13 +96,13 @@ class Ingredient
 };
 
 // Class for our hash function
-class HashFunction
-{
-    public:
-        size_t operator()(const Ingredient& i) const
-        {
-            return i.specificName.length() + i.genericName.length();
-            //return int(i.genericName.charAt[0]) + int(i.genericName.charAt[1]) + int(i.genericName.charAt[2]);
-            // hash function that calulates the ascii values for the first 3 characters
-        }
-};
+// class HashFunction
+// {
+//     public:
+//         size_t operator()(const Ingredient& i) const
+//         {
+//             return i.specificName.length() + i.genericName.length();
+//             //return int(i.genericName.charAt[0]) + int(i.genericName.charAt[1]) + int(i.genericName.charAt[2]);
+//             // hash function that calulates the ascii values for the first 3 characters
+//         }
+// };
