@@ -81,7 +81,36 @@ void printHashMap (unordered_map<string, Ingredient*> map)
     cout << "\nThere are " << testCounter << " ingredients in the hash map." << endl;
 }
 
+void swap(vector<float> vect, int numOne, int numTwo){
+    float temp = vect[numOne];
+    vect[numOne] = vect[numTwo];
+    vect[numTwo] = temp;
+}
+
 //helper function to sort with merge sort
+int splitArray(vector<float> & vect, int low, int high){
+    float pivot = vect[high];
+
+    int temp = (low - 1);
+    for(int i = low; i <= high - 1; i++){
+        if(vect[i] <= pivot){
+            temp++;
+            swap(vect,temp,i);
+        }
+    }
+    swap(vect,temp+1,high);
+    return (temp+1);
+
+}
+
+void quickSort(vector<float> &vect, int low, int high){
+    if(low < high){
+        int sort = splitArray(vect,low,high);
+
+        quickSort(vect,low,sort - 1);
+        quickSort(vect,sort + 1, high);
+    }
+}
 // void mergeSort(unordered_map<Ingredient, int, HashFunction> *hashMap, string sortBy){
     
 // }
