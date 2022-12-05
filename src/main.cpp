@@ -153,6 +153,13 @@ void mergeSort(vector<Ingredient>& vect, int low, int high, string sortBy){
     }
 }
 
+vector<Ingredient> mergeSortWrapper(unordered_map<string, Ingredient*> map){
+vector<Ingredient*> res;
+    for (auto i : map){
+        res.emplace_back(i);
+    }
+}
+
 
 int main ()
 {
