@@ -215,7 +215,7 @@ int main ()
 {
     // Make hashmap by calling populateHashMap("ingredients.csv")
     unordered_map<string, Ingredient*> hashMap;
-    hashMap = populateHashMap("tester.csv");
+    hashMap = populateHashMap("ingredients.csv");
 
     printHashMap(hashMap);
 
