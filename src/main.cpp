@@ -81,22 +81,27 @@ void printHashMap (unordered_map<string, Ingredient*> map)
     cout << "\nThere are " << testCounter << " ingredients in the hash map." << endl;
 }
 
-void swap(vector<float> &vect, int numOne, int numTwo)
+void swap(vector<pair<string,float>> &vect, int numOne, int numTwo)
 {
-    float temp = vect[numOne];
-    vect[numOne] = vect[numTwo];
-    vect[numTwo] = temp;
+    pair<string, float> temp (vect[numOne].first, vect[numOne].second);
+
+    vect[numOne].first = vect[numTwo].first;
+    vect[numOne].second = vect[numTwo].second;
+
+    vect[numTwo].first = temp.first;
+    vect[numTwo].second = temp.second;
+
 }
 
 //helper function to sort with merge sort
-int splitArray(vector<float> & vect, int low, int high)
+int splitArray(vector<pair<string,float>> & vect, int low, int high)
 {
-    float pivot = vect[high];
+    float pivot = vect[high].second;
 
     int temp = (low - 1);
     for(int i = low; i <= high - 1; i++)
     {
-        if(vect[i] <= pivot)
+        if(vect[i].second <= pivot)
         {
             temp++;
             swap(vect,temp,i);
@@ -107,7 +112,7 @@ int splitArray(vector<float> & vect, int low, int high)
 
 }
 
-void quickSort(vector<float> &vect, int low, int high)
+void quickSort(vector<pair<string,float>> &vect, int low, int high)
 {
     if(low < high)
     {
@@ -120,15 +125,15 @@ void quickSort(vector<float> &vect, int low, int high)
 //void mergeSort(unordered_map<string, Ingredient*> hashMap, string sortBy){
     
 //}
-void merge(vector<float>& vect, int low, int mid, int high)
+void merge(vector<pair<string,float>>& vect, int low, int mid, int high)
 {
-    vector<float> temp;
+    vector<pair<string,float>> temp;
     int i = low;
     int j = mid + 1;
 
     while (i <= mid && j <= high)
     {
-        if (vect[i] <= vect[j])
+        if (vect[i].second <= vect[j].second)
         {
             temp.push_back(vect[i]);
             ++i;
@@ -157,7 +162,7 @@ void merge(vector<float>& vect, int low, int mid, int high)
 
 }
 
-void mergeSort(vector<float>& vect, int low, int high)
+void mergeSort(vector<pair<string,float>>& vect, int low, int high)
 {
     if (low < high)
     {
