@@ -339,7 +339,7 @@ int main ()
             cin >> foodItem;
 
             // PROGRAM BREAKS BELOW/INGREDIENT CAN'T BE FOUND
-            // I TRIED TO DIFFERENT METHODS PLS SEE IF YOU CAN FIGURE IT OUT
+            // I TRIED TWO DIFFERENT METHODS PLS SEE IF YOU CAN FIGURE IT OUT
 
             // Find the chosen food item in the map and print the macros
             // for (int i = 0; i < hashMap.size(); i++)
