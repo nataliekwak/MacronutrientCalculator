@@ -320,8 +320,8 @@ int main ()
             }
 
             string category;
-            cout << "\nPlease type the category your ingredient is in exact from the above list:";
-            cin >> category;
+            cout << "\nPlease type the category your ingredient is in exact from the above list: " << endl;
+            getline(cin >> ws, category);
 
             cout << "\nThe following is a list of ingredients in the chosen category:" << endl;
 
@@ -335,30 +335,21 @@ int main ()
             }
 
             string foodItem;
-            cout << "\nPlease type the ingredient you want to search exactly from the above list:";
-            cin >> foodItem;
+            cout << "\nPlease type the ingredient you want to search exactly from the above list: ";
+            getline(cin >> ws, foodItem);
 
-            // PROGRAM BREAKS BELOW/INGREDIENT CAN'T BE FOUND
-            // I TRIED TWO DIFFERENT METHODS PLS SEE IF YOU CAN FIGURE IT OUT
+            unordered_map<string, Ingredient*>::iterator found;
+            found = hashMap.find(foodItem);
 
-            // Find the chosen food item in the map and print the macros
-            // for (int i = 0; i < hashMap.size(); i++)
-            // {
-            //     cout << "Looking for ingredient" << endl;
-            //     if (hashMap.find(foodItem))
-            //     {
-            //         cout << "Ingredient found" << endl;
-            //         i.second->printMacros();
-            //     }
-            unordered_map<string, Ingredient*>::const_iterator found = hashMap.find(foodItem);
+            cout << "Food item: " << foodItem << endl;
 
-            if ( found == hashMap.end() )
+            if (found != hashMap.end() )
             {
-                cout << "not found";
+                found->second->printMacros();
             }
             else
             {
-                found->second->printMacros();
+                cout << "Ingredient not found" << endl;
             }
         }
     }
