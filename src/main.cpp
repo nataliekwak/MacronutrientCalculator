@@ -219,7 +219,9 @@ vector<pair<string,float>> populateVectorSugar(unordered_map<string, Ingredient*
 
 int main ()
 {
-    cout << "Welcome to the MacroNutrient Calculator!" << endl;
+    cout << "\n--------------------------------------------" << endl;
+    cout << "| Welcome to the MacroNutrient Calculator! |" << endl;
+    cout << "--------------------------------------------" << endl;
 
     // Make hashmap by calling populateHashMap("ingredients.csv")
     unordered_map<string, Ingredient*> hashMap;
@@ -256,6 +258,15 @@ int main ()
                 mergeSort(proteins, 0, proteins.size() - 1);
                 auto stop = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(stop - start);
+
+                cout << "\nIngredients listed by amount of protein (from smallest to largest):" << endl;
+                for (int i = 0; i < proteins.size(); i++)
+                {
+                    cout << proteins[i].first << " - " << proteins[i].second << " g" << endl;
+                }
+
+                cout << "---------------------------------------------------------" << endl;
+
                 cout << "Time taken by merge sort: " << duration.count() << " microseconds" << endl;
             }
             // Quick Sort
@@ -265,13 +276,16 @@ int main ()
                 quickSort(proteins, 0, proteins.size() - 1);
                 auto stop = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(stop - start);
-                cout << "Time taken by quick sort: " << duration.count() << " microseconds" << endl;
-            }
+                
+                cout << "\nIngredients listed by amount of protein (from smallest to largest):" << endl;
+                for (int i = 0; i < proteins.size(); i++)
+                {
+                    cout << proteins[i].first << " - " << proteins[i].second << " g" << endl;
+                }
+                
+                cout << "---------------------------------------------------------" << endl;
 
-            cout << "\nIngredients listed by amount of protein (from smallest to largest):" << endl;
-            for (int i = 0; i < proteins.size(); i++)
-            {
-                cout << proteins[i].first << " - " << proteins[i].second << " g" << endl;
+                cout << "Time taken by quick sort: " << duration.count() << " microseconds" << endl;
             }
         }
         // Sort Ingredients by Sugar
@@ -286,18 +300,38 @@ int main ()
             // Merge Sort
             if (choice1 == 1)
             {
+                auto start = high_resolution_clock::now();
                 mergeSort(sugars, 0, sugars.size() - 1);
+                auto stop = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(stop - start);
+                
+                cout << "\nIngredients listed by amount of sugar (from smallest to largest):" << endl;
+                for (int i = 0; i < sugars.size(); i++)
+                {
+                    cout << sugars[i].first << " - " << sugars[i].second << " g" << endl;
+                }
+
+                cout << "---------------------------------------------------------" << endl;
+
+                cout << "Time taken by merge sort: " << duration.count() << " microseconds" << endl;
             }
             // Quick Sort
             else if (choice1 == 2)
             {
+                auto start = high_resolution_clock::now();
                 quickSort(sugars, 0, sugars.size() - 1);
-            }
+                auto stop = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(stop - start);
 
-            cout << "\nIngredients listed by amount of sugar (from smallest to largest):" << endl;
-            for (int i = 0; i < sugars.size(); i++)
-            {
-                cout << sugars[i].first << " - " << sugars[i].second << " g" << endl;
+                cout << "\nIngredients listed by amount of sugar (from smallest to largest):" << endl;
+                for (int i = 0; i < sugars.size(); i++)
+                {
+                    cout << sugars[i].first << " - " << sugars[i].second << " g" << endl;
+                }
+
+                cout << "---------------------------------------------------------" << endl;
+
+                cout << "Time taken by quick sort: " << duration.count() << " microseconds" << endl;
             }
         }
         // Search for Ingredient
