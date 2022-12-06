@@ -338,6 +338,9 @@ int main ()
             cout << "\nPlease type the ingredient you want to search exactly from the above list:";
             cin >> foodItem;
 
+            // PROGRAM BREAKS BELOW/INGREDIENT CAN'T BE FOUND
+            // I TRIED TO DIFFERENT METHODS PLS SEE IF YOU CAN FIGURE IT OUT
+
             // Find the chosen food item in the map and print the macros
             // for (int i = 0; i < hashMap.size(); i++)
             // {
