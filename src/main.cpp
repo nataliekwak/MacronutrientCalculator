@@ -173,6 +173,36 @@ void mergeSort(vector<pair<string,float>>& vect, int low, int high)
     }
 }
 
+vector<pair<string,float>> populateVectorProtein(unordered_map<string, Ingredient*> map){
+    vector<pair<string,float>> vect;
+    for (auto it = map.begin(); it != map.end(); ++it){
+        pair<string, float> temp (it->first, it->second->protein);
+        vect.push_back(temp);
+    }
+}
+vector<pair<string,float>> populateVectorCarbohydrate(unordered_map<string, Ingredient*> map){
+    vector<pair<string,float>> vect;
+    for (auto it = map.begin(); it != map.end(); ++it){
+        pair<string, float> temp (it->first, it->second->carbohydrate);
+        vect.push_back(temp);
+    }
+}
+vector<pair<string,float>> populateVectorCholesterol(unordered_map<string, Ingredient*> map){
+    vector<pair<string,float>> vect;
+    for (auto it = map.begin(); it != map.end(); ++it){
+        pair<string, float> temp (it->first, it->second->cholesterol);
+        vect.push_back(temp);
+    }
+}
+vector<pair<string,float>> populateVectorSugar(unordered_map<string, Ingredient*> map){
+    vector<pair<string,float>> vect;
+    for (auto it = map.begin(); it != map.end(); ++it){
+        pair<string, float> temp (it->first, it->second->sugar);
+        vect.push_back(temp);
+    }
+}
+
+
 
 int main ()
 {
