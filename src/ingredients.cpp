@@ -93,16 +93,28 @@ class Ingredient
             return sugar;
         }
 
+        // Print out the nutrients of an ingredient
+        void printMacros()
+        {
+            cout << "\n-----------------------------------------------------------" << endl;
+            cout << "Category: " << genericName << endl;
+            cout << "Ingredient: " << specificName << endl;
+            cout << "Carbohydrates: " << carbohydrate << " g" << endl;
+            cout << "Cholesterol: " << cholesterol << " mg" << endl;
+            cout << "Protein: " << protein << " g" << endl;
+            cout << "Sugar: " << sugar << " g" << endl;
+            cout << "-----------------------------------------------------------" << endl;
+        }
 };
 
 // Class for our hash function
-// class HashFunction
-// {
-//     public:
-//         size_t operator()(const Ingredient& i) const
-//         {
-//             return i.specificName.length() + i.genericName.length();
-//             //return int(i.genericName.charAt[0]) + int(i.genericName.charAt[1]) + int(i.genericName.charAt[2]);
-//             // hash function that calulates the ascii values for the first 3 characters
-//         }
-// };
+class HashFunction
+{
+    public:
+        size_t operator()(const Ingredient& i) const
+        {
+            return i.specificName.length() + i.genericName.length();
+            //return int(i.genericName.charAt[0]) + int(i.genericName.charAt[1]) + int(i.genericName.charAt[2]);
+            // hash function that calulates the ascii values for the first 3 characters
+        }
+};

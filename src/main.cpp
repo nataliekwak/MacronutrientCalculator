@@ -17,19 +17,6 @@ unordered_map<string, Ingredient*> populateHashMap (string file)
     fstream inFile; 
     inFile.open(file, ios::in); 
     
-    if (inFile.is_open()) 
-    {
-         cout << "File has been opened" << endl;
-    }
-    else 
-    {
-         cout << "ERROR: FILE NOT FOUND" << endl;
-    }
-
-    // Take the header line out of the file
-    //string trash;
-    //getline(inFile, trash);
-
     // Read the data from the file as a string vector
     vector<string> row;
     string line, singleValue, temp;
@@ -75,8 +62,8 @@ void printHashMap (unordered_map<string, Ingredient*> map)
 
     for (auto i : map)
     {
-        // UNCOMMENT BELOW PRINT EACH SPECIFIC NAME IN THE MAP 
-        //cout << i.first << endl;
+        // Print each specific name in the map
+        cout << i.first << endl;
 
         testCounter++;
     }
@@ -84,6 +71,7 @@ void printHashMap (unordered_map<string, Ingredient*> map)
     cout << "\nThere are " << testCounter << " ingredients in the hash map." << endl;
 }
 
+// Helper function to sort with merge sort
 void swap(vector<pair<string,float>> &vect, int numOne, int numTwo)
 {
     pair<string, float> temp (vect[numOne].first, vect[numOne].second);
@@ -96,7 +84,7 @@ void swap(vector<pair<string,float>> &vect, int numOne, int numTwo)
 
 }
 
-//helper function to sort with merge sort
+// Helper function to sort with merge sort
 int splitArray(vector<pair<string,float>> & vect, int low, int high)
 {
     float pivot = vect[high].second;
@@ -107,27 +95,27 @@ int splitArray(vector<pair<string,float>> & vect, int low, int high)
         if(vect[i].second <= pivot)
         {
             temp++;
-            swap(vect,temp,i);
+            swap(vect, temp, i);
         }
     }
-    swap(vect,temp+1,high);
-    return (temp+1);
+    swap(vect, temp + 1, high);
+    return(temp + 1);
 
 }
 
+// Function to implement quick sort
 void quickSort(vector<pair<string,float>> &vect, int low, int high)
 {
     if(low < high)
     {
-        int sort = splitArray(vect,low,high);
+        int sort = splitArray(vect, low, high);
 
-        quickSort(vect,low,sort - 1);
-        quickSort(vect,sort + 1, high);
+        quickSort(vect, low, sort - 1);
+        quickSort(vect, sort + 1, high);
     }
 }
-//void mergeSort(unordered_map<string, Ingredient*> hashMap, string sortBy){
-    
-//}
+
+// Merge sort helper
 void merge(vector<pair<string,float>>& vect, int low, int mid, int high)
 {
     vector<pair<string,float>> temp;
@@ -147,24 +135,26 @@ void merge(vector<pair<string,float>>& vect, int low, int mid, int high)
             ++j;
         }
     }
+
     while (i <= mid)
     {
         temp.push_back(vect[i]);
         ++i;
     }
+
     while (j <= high)
     {
         temp.push_back(vect[j]);
         ++j;
     }
+
     for (int i = low; i <= high; ++i)
     {
         vect[i] = temp[i - low];
     }
-
-
 }
 
+// Function to implement merge sort
 void mergeSort(vector<pair<string,float>>& vect, int low, int high)
 {
     if (low < high)
@@ -176,33 +166,48 @@ void mergeSort(vector<pair<string,float>>& vect, int low, int high)
     }
 }
 
-vector<pair<string,float>> populateVectorProtein(unordered_map<string, Ingredient*> map){
+// Returns a vector of protein values from a hashmap
+vector<pair<string,float>> populateVectorProtein(unordered_map<string, Ingredient*> map)
+{
     vector<pair<string,float>> vect;
-    for (auto it = map.begin(); it != map.end(); ++it){
+    for (auto it = map.begin(); it != map.end(); ++it)
+    {
         pair<string, float> temp (it->first, it->second->protein);
         vect.push_back(temp);
     }
     return vect;
 }
-vector<pair<string,float>> populateVectorCarbohydrate(unordered_map<string, Ingredient*> map){
+
+// Returns a vector of carb values from a hashmap
+vector<pair<string,float>> populateVectorCarbohydrate(unordered_map<string, Ingredient*> map)
+{
     vector<pair<string,float>> vect;
-    for (auto it = map.begin(); it != map.end(); ++it){
+    for (auto it = map.begin(); it != map.end(); ++it)
+    {
         pair<string, float> temp (it->first, it->second->carbohydrate);
         vect.push_back(temp);
     }
     return vect;
 }
-vector<pair<string,float>> populateVectorCholesterol(unordered_map<string, Ingredient*> map){
+
+// Returns a vector of cholesterol values from a hashmap
+vector<pair<string,float>> populateVectorCholesterol(unordered_map<string, Ingredient*> map)
+{
     vector<pair<string,float>> vect;
-    for (auto it = map.begin(); it != map.end(); ++it){
+    for (auto it = map.begin(); it != map.end(); ++it)
+    {
         pair<string, float> temp (it->first, it->second->cholesterol);
         vect.push_back(temp);
     }
     return vect;
 }
-vector<pair<string,float>> populateVectorSugar(unordered_map<string, Ingredient*> map){
+
+// Returns a vector of sugar values from a hashmap
+vector<pair<string,float>> populateVectorSugar(unordered_map<string, Ingredient*> map)
+{
     vector<pair<string,float>> vect;
-    for (auto it = map.begin(); it != map.end(); ++it){
+    for (auto it = map.begin(); it != map.end(); ++it)
+    {
         pair<string, float> temp (it->first, it->second->sugar);
         vect.push_back(temp);
     }
@@ -210,33 +215,150 @@ vector<pair<string,float>> populateVectorSugar(unordered_map<string, Ingredient*
 }
 
 
-
 int main ()
 {
+    cout << "Welcome to the MacroNutrient Calculator!" << endl;
+
     // Make hashmap by calling populateHashMap("ingredients.csv")
     unordered_map<string, Ingredient*> hashMap;
     hashMap = populateHashMap("ingredients.csv");
 
-    printHashMap(hashMap);
+    // Take user input
+    bool exit = false;
+    while (!exit)
+    {
+        int choice;
+        cout << "\nPlease select an option:\n0. Exit\n" << "1. Sort ingredients by protein\n" << "2. Sort ingredients by sugar\n" << "3. Check Macros of a Specifc Ingredient\n";
+        cin >> choice;
 
-    // // Take user input
-    // bool exit = false;
-    // while (!exit)
-    // {
-    //     int choice;
-    //     cout << "0. Exit\n" << "1. Print ingredients by protein\n" << "3. Print ingredients by sugar\n" << "3. Check specifc ingredient\n";
-    //     cin >> choice;
+        // Exit
+        if (choice == 0)
+        {
+            exit = true;
+            break;
+        }
+        // Sort ingredients by protein
+        else if (choice == 1)
+        {
+            int choice1;
+            cout << "\nWhich sorting algorithm would you like to use?\n1. Merge Sort\n2. Quick Sort\n";
+            cin >> choice1;
 
-    //     if (choice == 0)
-    //     {
-    //         exit = true;
-    //         break;
-    //     }
-    //     else if (choice == 1)
-    //     {
+            vector<pair<string, float>> proteins = populateVectorProtein(hashMap);
 
-    //     }
-    // }
+            // Merge Sort
+            if (choice1 == 1)
+            {
+                mergeSort(proteins, 0, proteins.size() - 1);
+            }
+            // Quick Sort
+            else if (choice1 == 2)
+            {
+                quickSort(proteins, 0, proteins.size() - 1);
+            }
+
+            cout << "\nIngredients listed by amount of protein (from smallest to largest):" << endl;
+            for (int i = 0; i < proteins.size(); i++)
+            {
+                cout << proteins[i].first << " - " << proteins[i].second << " g" << endl;
+            }
+        }
+        // Sort Ingredients by Sugar
+        else if (choice == 2)
+        {
+            int choice1;
+            cout << "\nWhich sorting algorithm would you like to use?\n1. Merge Sort\n2. Quick Sort\n";
+            cin >> choice1;
+
+            vector<pair<string, float>> sugars = populateVectorSugar(hashMap);
+
+            // Merge Sort
+            if (choice1 == 1)
+            {
+                mergeSort(sugars, 0, sugars.size() - 1);
+            }
+            // Quick Sort
+            else if (choice1 == 2)
+            {
+                quickSort(sugars, 0, sugars.size() - 1);
+            }
+
+            cout << "\nIngredients listed by amount of sugar (from smallest to largest):" << endl;
+            for (int i = 0; i < sugars.size(); i++)
+            {
+                cout << sugars[i].first << " - " << sugars[i].second << " g" << endl;
+            }
+        }
+        // Search for Ingredient
+        else if (choice == 3)
+        {
+            cout << "\nThe following is a list of ingredient categories:" << endl;
+            vector<string> categories;
+            bool included = false;
+
+            for (auto i : hashMap)
+            {
+                included = false;
+                for (auto j : categories)
+                {
+                    if (i.second->genericName == j)
+                    {
+                        included = true;
+                        break;
+                    }
+                }
+
+                if (!included)
+                {
+                    categories.push_back(i.second->genericName);
+                }
+            }
+
+            for (auto i : categories)
+            {
+                cout << i << endl;
+            }
+
+            string category;
+            cout << "\nPlease type the category your ingredient is in exact from the above list:";
+            cin >> category;
+
+            cout << "\nThe following is a list of ingredients in the chosen category:" << endl;
+
+            // Give the user options based on the category they picked
+            for (auto i : hashMap)
+            {
+                if (i.second->genericName == category)
+                {
+                    cout << i.second->specificName << endl;
+                }
+            }
+
+            string foodItem;
+            cout << "\nPlease type the ingredient you want to search exactly from the above list:";
+            cin >> foodItem;
+
+            // Find the chosen food item in the map and print the macros
+            // for (int i = 0; i < hashMap.size(); i++)
+            // {
+            //     cout << "Looking for ingredient" << endl;
+            //     if (hashMap.find(foodItem))
+            //     {
+            //         cout << "Ingredient found" << endl;
+            //         i.second->printMacros();
+            //     }
+            unordered_map<string, Ingredient*>::const_iterator found = hashMap.find(foodItem);
+
+            if ( found == hashMap.end() )
+            {
+                cout << "not found";
+            }
+            else
+            {
+                found->second->printMacros();
+            }
+        }
+    }
     
     return 0;
 }
