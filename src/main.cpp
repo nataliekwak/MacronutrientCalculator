@@ -6,6 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 
 // Helper function to read the passed in csv file and return a populated hashmap 
@@ -249,12 +251,21 @@ int main ()
             // Merge Sort
             if (choice1 == 1)
             {
+                // https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
+                auto start = high_resolution_clock::now();
                 mergeSort(proteins, 0, proteins.size() - 1);
+                auto stop = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(stop - start);
+                cout << "Time taken by merge sort: " << duration.count() << " microseconds" << endl;
             }
             // Quick Sort
             else if (choice1 == 2)
             {
+                auto start = high_resolution_clock::now();
                 quickSort(proteins, 0, proteins.size() - 1);
+                auto stop = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(stop - start);
+                cout << "Time taken by quick sort: " << duration.count() << " microseconds" << endl;
             }
 
             cout << "\nIngredients listed by amount of protein (from smallest to largest):" << endl;
