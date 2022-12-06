@@ -1,8 +1,11 @@
 #include "ingredients.cpp"
 #include <unordered_map>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include <vector>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 // Helper function to read the passed in csv file and return a populated hashmap 
@@ -179,6 +182,7 @@ vector<pair<string,float>> populateVectorProtein(unordered_map<string, Ingredien
         pair<string, float> temp (it->first, it->second->protein);
         vect.push_back(temp);
     }
+    return vect;
 }
 vector<pair<string,float>> populateVectorCarbohydrate(unordered_map<string, Ingredient*> map){
     vector<pair<string,float>> vect;
@@ -186,6 +190,7 @@ vector<pair<string,float>> populateVectorCarbohydrate(unordered_map<string, Ingr
         pair<string, float> temp (it->first, it->second->carbohydrate);
         vect.push_back(temp);
     }
+    return vect;
 }
 vector<pair<string,float>> populateVectorCholesterol(unordered_map<string, Ingredient*> map){
     vector<pair<string,float>> vect;
@@ -193,6 +198,7 @@ vector<pair<string,float>> populateVectorCholesterol(unordered_map<string, Ingre
         pair<string, float> temp (it->first, it->second->cholesterol);
         vect.push_back(temp);
     }
+    return vect;
 }
 vector<pair<string,float>> populateVectorSugar(unordered_map<string, Ingredient*> map){
     vector<pair<string,float>> vect;
@@ -200,6 +206,7 @@ vector<pair<string,float>> populateVectorSugar(unordered_map<string, Ingredient*
         pair<string, float> temp (it->first, it->second->sugar);
         vect.push_back(temp);
     }
+    return vect;
 }
 
 
